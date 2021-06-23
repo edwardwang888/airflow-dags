@@ -26,24 +26,23 @@ class ParametrizedBranchOperator(BaseBranchOperator):
         return self.downstream_tasks if self.myvar else []
 
 
-if __name__ == '__main__':
-    dag = DAG(
-        dag_id='parametrized_branch_operator',
-        schedule_interval=None,
-        start_date=days_ago(0),
-        catchup=False
-    )
+dag = DAG(
+    dag_id='parametrized_branch_operator',
+    schedule_interval=None,
+    start_date=days_ago(0),
+    catchup=False
+)
 
-    dummy = DummyOperator(
-        task_id='dummy',
-        dag=dag
-    )
+dummy = DummyOperator(
+    task_id='dummy',
+    dag=dag
+)
 
-    branch = ParametrizedBranchOperator(
-        task_id='branch',
-        myvar=0,
-        downstream_tasks=dummy.task_id,
-        dag=dag
-    )
+branch = ParametrizedBranchOperator(
+    task_id='branch',
+    myvar=0,
+    downstream_tasks=dummy.task_id,
+    dag=dag
+)
 
-    branch >> dummy
+branch >> dummy
