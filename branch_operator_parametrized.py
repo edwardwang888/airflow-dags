@@ -2,6 +2,8 @@
 DAG containing a parametrized branch operator. Parameters are
 provided as member variables of the class.  If it is possible
 pass parameters directly to `context`, that would be preferred.
+
+Tested on: v2.1.0
 """
 
 from airflow import DAG
