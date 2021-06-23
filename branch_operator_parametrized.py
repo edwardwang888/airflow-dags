@@ -1,7 +1,10 @@
 """
 DAG containing a parametrized branch operator. Parameters are
-provided as member variables of the class.  If it is possible
-pass parameters directly to `context`, that would be preferred.
+provided as member variables of the class.
+
+Note: this does not seem to be the recommended way to use a branch
+operator. BranchPythonOperator can accomplish the same tasks in a
+much cleaner manner.
 
 Tested on: v2.1.0
 """
