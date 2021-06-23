@@ -16,14 +16,14 @@ from airflow.utils.dates import days_ago
 
 
 class ParametrizedBranchOperator(BaseBranchOperator):
-    def __init__(self, *args, myvar, downstream_tasks, **kwargs):
+    def __init__(self, *args, myvar, tasks, **kwargs):
         self.myvar = myvar
-        self.downstream_tasks = downstream_tasks
+        self.tasks = tasks
         super().__init__(*args, **kwargs)
 
     def choose_branch(self, context):
         print(f'myvar is: {self.myvar}')
-        return self.downstream_tasks if self.myvar else []
+        return self.tasks if self.myvar else []
 
 
 dag = DAG(
@@ -41,7 +41,7 @@ dummy = DummyOperator(
 branch = ParametrizedBranchOperator(
     task_id='branch',
     myvar=0,
-    downstream_tasks=dummy.task_id,
+    tasks=dummy.task_id,
     dag=dag
 )
 
