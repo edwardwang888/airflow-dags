@@ -13,4 +13,5 @@ For setup on Mac:
 * Install npm
 * Install webpack
 * yarn build
-* Configuration options are specified in $AIRFLOW_HOME (automatically created). If any configuration options are problematic, look there to find the proper configuration setting.
+* Configuration options are specified in `$AIRFLOW_HOME` (automatically created). If any configuration options are problematic, look there to find the proper configuration setting.
+* When running unit tests in the local virtualenv, `--with-db-init` may be required. Otherwise, the previous state of the testing database may not be cleared. The testing database is located at `unittests.db` in the `$AIRFLOW_HOME` directory. 
